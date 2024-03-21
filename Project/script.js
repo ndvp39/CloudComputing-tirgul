@@ -137,4 +137,12 @@ function updateStatisticsBlock() {
         <p>Least common search: ["${minName}" appeared in ${searchCounterMap[minName]} searches]</p>
       `;
     }
+    else {
+        var divElement = document.createElement('div');
+        var h2Element = document.createElement('h2');
+        h2Element.innerText = "No results found.";
+        divElement.appendChild(h2Element);
+        statisticsBlock.appendChild(divElement);
+    }
+
 }
