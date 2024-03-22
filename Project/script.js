@@ -127,6 +127,9 @@ function getMaxQuery() {
 // Function to update statistics block with most and least common search
 function updateStatisticsBlock() {
     const statisticsBlock = document.getElementById('statistics-block');
+    var divElement = document.createElement('div');
+    divElement.innerText = "Test.";
+    statisticsBlock.appendChild(divElement);
 
     if (statisticsBlock) {
         var minName = getMinQuery();
