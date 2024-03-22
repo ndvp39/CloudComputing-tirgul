@@ -125,7 +125,7 @@
     </style>
 </head>
 
-<body>
+<body onload="updateStatisticsBlock()">
 
     <header>
         <button id="back_btn" class="back-button" onclick="backToAdmin()">
@@ -137,7 +137,7 @@
     </header>
 
     <section>
-        <div id="statistics-block" onload="updateStatisticsBlock()">test</div>
+        <div id="statistics-block"></div>
 
         <div class="index-block">
             <h2>Latest added indexes </h2>
@@ -207,7 +207,7 @@
             google.colab.kernel.invokeFunction('notebook.back_to_admin', [], {});
         }
     </script>
-    <script src="Project\script.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

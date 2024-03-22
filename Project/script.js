@@ -83,7 +83,7 @@ function renderResults_title_link(titles, links) {
 }
 
 // Define an empty object to store querys and counters
-const searchCounterMap = {};
+var searchCounterMap = {};
 
 // Function to add a query to the map or increment its counter if it already exists
 function addQuery(query) {
@@ -126,12 +126,9 @@ function getMaxQuery() {
 
 // Function to update statistics block with most and least common search
 function updateStatisticsBlock() {
-    const statisticsBlock = document.getElementById('statistics-block');
-    var divElement = document.createElement('div');
-    divElement.innerText = "Test.";
-    statisticsBlock.appendChild(divElement);
+    var statisticsBlock = document.getElementById('statistics-block');
 
-    if (statisticsBlock) {
+    if (statisticsBlock === undefined) {
         var minName = getMinQuery();
         var maxName = getMaxQuery();
 
