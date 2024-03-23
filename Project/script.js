@@ -147,7 +147,7 @@ function updateStatisticsBlock() {
     }
     else {
         var h2Element = document.createElement('h2');
-        h2Element.innerText = "No results found.";
+        h2Element.innerText = "You have not searched yet.";
         statisticsBlock.appendChild(h2Element);
     }
 }
