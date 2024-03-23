@@ -27,6 +27,10 @@ function openIndexEditor() {
     google.colab.kernel.invokeFunction('notebook.open_indexeditor_page', [], {});
 }
 
+function getRandomIndexes() {
+    return google.colab.kernel.invokeFunction('notebook.get_random_indexes_with_counters', [], {});
+}
+
 function askChatbot() {
     var question = document.getElementById('user-input-chatbot').value;
     var chatContainer = document.getElementById('chat');
@@ -156,16 +160,15 @@ function generateGraph() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // Draw the graph based on the selected word's data
-    const data = graphData[selectedWord]; //change!
-    let xPos = 10;
+    var data = getRandomIndexes();
+    var xPos = 10;
 
-    for (const url in data) {
-        const count = data[url];
+    for (const [index, sumOfCounters] of data) {
         ctx.fillStyle = '#4CAF50'; // Green color for bars
-        ctx.fillRect(xPos, canvas.height - count * 5, 30, count * 5);
+        ctx.fillRect(xPos, canvas.height - sumOfCounters * 5, 30, sumOfCounters * 5);
         ctx.fillStyle = '#ffffff'; // White color for text
-        ctx.fillText(`${count}`, xPos + 10, canvas.height - count * 5 - 10);
-        ctx.fillText(url, xPos, canvas.height + 15);
+        ctx.fillText(`${sumOfCounters}`, xPos + 10, canvas.height - sumOfCounters * 5 - 10);
+        ctx.fillText(index, xPos, canvas.height + 15);
         xPos += 50;
     }
 }
