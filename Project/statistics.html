@@ -125,7 +125,7 @@
     </style>
 </head>
 
-<body onload="updateStatisticsBlock()">
+<body onload="updateStatisticsBlock(); generateGraph()">
 
     <header>
         <button id="back_btn" class="back-button" onclick="backToAdmin()">
@@ -151,14 +151,7 @@
 
     <section id="graph-section">
         <h2>Index Graph - top 5 links</h2>
-        <label for="wordSelect">Select index:</label>
-        <select id="wordSelect">
-            <option value="Cloud">Cloud</option>
-            <option value="AWS">AWS</option>
-            <option value="Data">Data</option>
-        </select>
         <canvas id="wordGraph" width="400" height="200"></canvas>
-        <button id="generateButton" onclick="generateGraph()">Generate Graph</button>
     </section>
 
     <script>
@@ -180,32 +173,9 @@
             // Add more words and their data as needed
         };
 
-        function generateGraph() {
-            const selectedWord = document.getElementById('wordSelect').value;
-            const canvas = document.getElementById('wordGraph');
-            const ctx = canvas.getContext('2d');
 
-            // Clear the canvas
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // Draw the graph based on the selected word's data
-            const data = graphData[selectedWord];
-            let xPos = 10;
 
-            for (const url in data) {
-                const count = data[url];
-                ctx.fillStyle = '#4CAF50'; // Green color for bars
-                ctx.fillRect(xPos, canvas.height - count * 5, 30, count * 5);
-                ctx.fillStyle = '#ffffff'; // White color for text
-                ctx.fillText(`${count}`, xPos + 10, canvas.height - count * 5 - 10);
-                ctx.fillText(url, xPos, canvas.height + 15);
-                xPos += 50;
-            }
-        }
-
-        function backToAdmin() {
-            google.colab.kernel.invokeFunction('notebook.back_to_admin', [], {});
-        }
     </script>
     <script src="script.js"></script>
 </body>

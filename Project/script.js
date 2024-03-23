@@ -15,6 +15,10 @@ function backToHomePage() {
     google.colab.kernel.invokeFunction('notebook.back_to_home_page', [], {});
 }
 
+function backToAdmin() {
+    google.colab.kernel.invokeFunction('notebook.back_to_admin', [], {});
+}
+
 function openChatBot() {
     google.colab.kernel.invokeFunction('notebook.open_chatbot_page', [], {});
 }
@@ -142,5 +146,26 @@ function updateStatisticsBlock() {
         h2Element.innerText = "No results found.";
         statisticsBlock.appendChild(h2Element);
     }
+}
 
+function generateGraph() {
+    const canvas = document.getElementById('wordGraph');
+    const ctx = canvas.getContext('2d');
+
+    // Clear the canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Draw the graph based on the selected word's data
+    const data = graphData[selectedWord]; //change!
+    let xPos = 10;
+
+    for (const url in data) {
+        const count = data[url];
+        ctx.fillStyle = '#4CAF50'; // Green color for bars
+        ctx.fillRect(xPos, canvas.height - count * 5, 30, count * 5);
+        ctx.fillStyle = '#ffffff'; // White color for text
+        ctx.fillText(`${count}`, xPos + 10, canvas.height - count * 5 - 10);
+        ctx.fillText(url, xPos, canvas.height + 15);
+        xPos += 50;
+    }
 }
