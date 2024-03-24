@@ -34,12 +34,6 @@ function getRandomIndexes() {
     google.colab.kernel.invokeFunction('notebook.get_random_indexes_with_counters', [], {});
 }
 
-function getMinMaxKeys() {
-    console.log("Enter!!!!!!!!!!!!")
-    google.colab.kernel.invokeFunction('notebook.get_min_max_keys', [], {});
-    console.log("Exit!!!!!!!!!!!!!")
-}
-
 
 function askChatbot() {
     var question = document.getElementById('user-input-chatbot').value;
