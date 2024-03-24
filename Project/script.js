@@ -31,11 +31,11 @@ function openIndexEditor() {
 }
 
 function getRandomIndexes() {
-    return google.colab.kernel.invokeFunction('notebook.get_random_indexes_with_counters', [], {});
+    google.colab.kernel.invokeFunction('notebook.get_random_indexes_with_counters', [], {});
 }
 
 function get_min_max_keys() {
-    return google.colab.kernel.invokeFunction('notebook.get_min_max_keys', [], {});
+    google.colab.kernel.invokeFunction('notebook.get_min_max_keys', [], {});
 }
 
 
@@ -144,18 +144,10 @@ function getMaxQuery() {
 // Function to update statistics block with most and least common search
 function updateStatisticsBlock(min_key, min_counter, max_key, max_counter) {
     var statisticsBlock = document.getElementById('statistics-block');
-
-    if (statisticsBlock === undefined) {
-        statisticsBlock.innerHTML = `
+    statisticsBlock.innerHTML = `
         <p>Most common search: ["${max_key}" appeared in ${max_counter} searches]</p>
         <p>Least common search: ["${min_key}" appeared in ${min_counter} searches]</p>
       `;
-    }
-    else {
-        var h2Element = document.createElement('h2');
-        h2Element.innerText = "You have not searched yet.";
-        statisticsBlock.appendChild(h2Element);
-    }
 }
 
 function generateGraph() {
