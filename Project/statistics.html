@@ -125,7 +125,7 @@
     </style>
 </head>
 
-<body>
+<body onload="getMinMaxKeys()">
 
     <header>
         <button id="back_btn" class="back-button" onclick="backToAdmin()">
@@ -152,7 +152,7 @@
     <section id="graph-section">
         <h2>Index Graph - top 5 links</h2>
         <canvas id="wordGraph" width="400" height="200"></canvas>
-        <button id="generateButton" onclick="getMinMaxKeys()">Generate Graph</button>
+        <button id="generateButton">Generate Graph</button>
     </section>
     <script>
         function getMinMaxKeys() {
@@ -161,9 +161,6 @@
 
         // Function to update statistics block with most and least common search
         function updateStatisticsBlock(min_key, min_counter, max_key, max_counter) {
-            console.log("Enterrrrrrr!!!!!!!!!!!")
-            console.log(min_key, min_counter, max_key, max_counter)
-
             var statisticsBlock = document.getElementById('statistics-block');
             statisticsBlock.innerHTML = `
                 <p>Most common search: ["${max_key}" appeared in ${max_counter} searches]</p>
