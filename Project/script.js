@@ -137,14 +137,7 @@ function getMaxQuery() {
     return maxName;
 }
 
-// Function to update statistics block with most and least common search
-function updateStatisticsBlock(min_key, min_counter, max_key, max_counter) {
-    var statisticsBlock = document.getElementById('statistics-block');
-    statisticsBlock.innerHTML = `
-        <p>Most common search: ["${max_key}" appeared in ${max_counter} searches]</p>
-        <p>Least common search: ["${min_key}" appeared in ${min_counter} searches]</p>
-      `;
-}
+
 
 function generateGraph() {
     const canvas = document.getElementById('wordGraph');
