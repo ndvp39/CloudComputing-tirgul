@@ -34,6 +34,11 @@ function getRandomIndexes() {
     return google.colab.kernel.invokeFunction('notebook.get_random_indexes_with_counters', [], {});
 }
 
+function get_min_max_keys() {
+    return google.colab.kernel.invokeFunction('notebook.get_min_max_keys', [], {});
+}
+
+
 function askChatbot() {
     var question = document.getElementById('user-input-chatbot').value;
     var chatContainer = document.getElementById('chat');
@@ -137,16 +142,13 @@ function getMaxQuery() {
 }
 
 // Function to update statistics block with most and least common search
-function updateStatisticsBlock() {
+function updateStatisticsBlock(min_key, min_counter, max_key, max_counter) {
     var statisticsBlock = document.getElementById('statistics-block');
 
     if (statisticsBlock === undefined) {
-        var minName = getMinQuery();
-        var maxName = getMaxQuery();
-
         statisticsBlock.innerHTML = `
-        <p>Most common search: ["${maxName}" appeared in ${searchCounterMap[maxName]} searches]</p>
-        <p>Least common search: ["${minName}" appeared in ${searchCounterMap[minName]} searches]</p>
+        <p>Most common search: ["${max_key}" appeared in ${max_counter} searches]</p>
+        <p>Least common search: ["${min_key}" appeared in ${min_counter} searches]</p>
       `;
     }
     else {
