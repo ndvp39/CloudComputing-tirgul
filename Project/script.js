@@ -35,7 +35,9 @@ function getRandomIndexes() {
 }
 
 function get_min_max_keys() {
+    console.log("Enter")
     google.colab.kernel.invokeFunction('notebook.get_min_max_keys', [], {});
+    console.log("Exit")
 }
 
 
