@@ -1,5 +1,5 @@
 // Import the functions you need from the SDKs you need
-//import { initializeApp } from "firebase/app";
+import { initializeApp } from "firebase/app";
 
 function performSearch() {
     var searchString = document.getElementById('searchInput').value;
@@ -178,19 +178,22 @@ function generateGraph() {
 }
 
 
-var firebase = require("firebase/app");
-require("firebase/firestore");
 
-// Your web app's Firebase configuration
-firebase.initializeApp({
-    apiKey: "AIzaSyCAxakgYrZ7JNViupl2eEDaaRXWn9wPEbE",
-    authDomain: "cloudprojectpanthers.firebaseapp.com",
-    projectId: "cloudprojectpanthers",
-});
+// // Your web app's Firebase configuration
+// const firebaseConfig = {
+//     apiKey: "AIzaSyCAxakgYrZ7JNViupl2eEDaaRXWn9wPEbE",
+//     authDomain: "cloudprojectpanthers.firebaseapp.com",
+//     projectId: "cloudprojectpanthers",
+//     storageBucket: "cloudprojectpanthers.appspot.com",
+//     messagingSenderId: "23178040617",
+//     appId: "1:23178040617:web:e2a2fc03db689d22ef9338",
+//     measurementId: "G-4YBSX1LQ7K"
+// };
 
-// Get a reference to the Firestore database
-var db = firebase.firestore();
-console.log(db);
+// // Initialize Firebase
+// const app = initializeApp(firebaseConfig);
+// const db = getFirestore(app);
+// console.log(db);
 
 // Define the function to update or add a document
 function updateOrAddStatistic(statisticName) {
