@@ -98,15 +98,9 @@ function addQuery(query) {
     } else {
         searchCounterMap[query] = 1; // Initialize counter if query is encountered for the first time
     }
-<<<<<<< HEAD
     console.log("Updated searchCounterMap:", searchCounterMap); // Debugging statement
-=======
-<<<<<<< HEAD
     console.log(Object.keys(searchCounterMap).length)
-=======
     console.log("Updated searchCounterMap:", searchCounterMap); // Debugging statement
->>>>>>> a5fa6b1 (ttest)
->>>>>>> f5d8e81 (ttest)
 }
 
 // Function to get the query with the minimum counter
