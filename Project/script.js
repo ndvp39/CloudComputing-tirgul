@@ -174,3 +174,37 @@ function generateGraph() {
         xPos += 50;
     }
 }
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+    apiKey: "AIzaSyCAxakgYrZ7JNViupl2eEDaaRXWn9wPEbE",
+    authDomain: "cloudprojectpanthers.firebaseapp.com",
+    projectId: "cloudprojectpanthers",
+  };
+  
+// Get a reference to the Firestore database
+var db = firebase.firestore();
+
+  // Define the function to update or add a document
+  function updateOrAddStatistic(statisticName) {
+    var statisticsRef = db.collection("statisticsPanthers").doc(statisticName);
+  
+    return db.runTransaction(function(transaction) {
+      return transaction.get(statisticsRef).then(function(doc) {
+        if (doc.exists) {
+          // Document exists, update the counter
+          var newValue = doc.data().counter + 1;
+          transaction.update(statisticsRef, { counter: newValue });
+        } else {
+          // Document doesn't exist, create a new one
+          transaction.set(statisticsRef, { counter: 1 });
+        }
+      });
+    }).then(function() {
+      console.log("Transaction successfully committed!");
+    }).catch(function(error) {
+      console.error("Transaction failed: ", error);
+    });
+  }
+  
