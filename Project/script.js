@@ -34,10 +34,10 @@ function getRandomIndexes() {
     google.colab.kernel.invokeFunction('notebook.get_random_indexes_with_counters', [], {});
 }
 
-function get_min_max_keys() {
-    console.log("Enter")
+function getMinMaxKeys() {
+    console.log("Enter!!!!!!!!!!!!")
     google.colab.kernel.invokeFunction('notebook.get_min_max_keys', [], {});
-    console.log("Exit")
+    console.log("Exit!!!!!!!!!!!!!")
 }
 
 
