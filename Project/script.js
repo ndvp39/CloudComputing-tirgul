@@ -95,13 +95,13 @@ var searchCounterMap = {};
 
 // Function to add a query to the map or increment its counter if it already exists
 function addQuery(query) {
+    console.log("Query received:", query); // Debugging statement
     if (searchCounterMap[query]) {
         searchCounterMap[query]++; // Increment counter if query already exists
-        console.log(query)
     } else {
         searchCounterMap[query] = 1; // Initialize counter if query is encountered for the first time
     }
-    console.log(Object.keys(searchCounterMap).length)
+    console.log("Updated searchCounterMap:", searchCounterMap); // Debugging statement
 }
 
 // Function to get the query with the minimum counter
