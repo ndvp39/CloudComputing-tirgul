@@ -185,6 +185,7 @@ const firebaseConfig = {
   
 // Get a reference to the Firestore database
 var db = firebase.firestore();
+console.log(db);
 
   // Define the function to update or add a document
   function updateOrAddStatistic(statisticName) {
