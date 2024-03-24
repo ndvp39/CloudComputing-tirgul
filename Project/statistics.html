@@ -156,27 +156,11 @@
     </section>
 
     <script>
-        // Sample data for the graph (replace with actual data)
-        const graphData = {
-            Cloud: {
-                URL1: 10,
-                URL2: 15,
-                // Add more URLs and their corresponding counts
-            },
-            AWS: {
-                URL1: 5,
-                URL2: 20,
-                // Add more URLs and their corresponding counts
-            },
-            Data: {
-                URL1: 2
-            },
-            // Add more words and their data as needed
-        };
-
-
-
-
+        function getMinMaxKeys() {
+            console.log("Enter!!!!!!!!!!!!")
+            google.colab.kernel.invokeFunction('notebook.get_min_max_keys', [], {});
+            console.log("Exit!!!!!!!!!!!!!")
+        }
     </script>
     <script src="script.js"></script>
 </body>
