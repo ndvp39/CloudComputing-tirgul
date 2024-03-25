@@ -188,19 +188,22 @@
 
             // Draw the graph based on the provided indexes and scaled counters
             var xPos = 10;
+            const barWidth = 30;
+            const gapBetweenBars = 50; // Increase this value to increase the gap between bars
 
             for (let i = 0; i < indexes.length; i++) {
                 const index = indexes[i];
                 const scaledCounter = counters[i] * scaleFactor;
 
                 ctx.fillStyle = '#4CAF50'; // Green color for bars
-                ctx.fillRect(xPos, canvas.height - scaledCounter, 30, scaledCounter);
+                ctx.fillRect(xPos, canvas.height - scaledCounter, barWidth, scaledCounter);
                 ctx.fillStyle = '#ffffff'; // White color for text
-                ctx.fillText(`${counters[i]}`, xPos + 10, canvas.height - scaledCounter - 10);
-                ctx.fillText(index, xPos, canvas.height + 15);
-                xPos += 50;
+                ctx.fillText(`${counters[i]}`, xPos + barWidth / 2 - 5, canvas.height - scaledCounter - 10);
+                ctx.fillText(index, xPos + barWidth / 2 - ctx.measureText(index).width / 2, canvas.height + 15);
+                xPos += gapBetweenBars + barWidth;
             }
         }
+
     </script>
 
 </body>
