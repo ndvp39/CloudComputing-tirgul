@@ -82,6 +82,7 @@
             outline: none;
         }
 
+        #minMaxButton:hover,
         #wordSelect:hover,
         #generateButton:hover {
             border: 1px solid gray;
@@ -92,6 +93,13 @@
             color: #fff;
             cursor: pointer;
         }
+
+        #minMaxButton {
+            background-color: #505050;
+            color: #fff;
+            cursor: pointer;
+        }
+
 
         #back_btn {
             margin: 10px 10px 10px 10px;
@@ -137,9 +145,9 @@
     </header>
 
     <section>
+
         <button id="minMaxButton" onclick="getMinMaxKeys()">Min/Max query</button>
         <div id="statistics-block"></div>
-
         <div class="index-block">
             <h2>Latest added indexes!!!! </h2>
             <ul>
