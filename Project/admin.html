@@ -177,6 +177,10 @@
 
     <script>
 
+        function getIndexesKeys() {
+            google.colab.kernel.invokeFunction('notebook.get_indexes_keys', [], {});
+        }
+
         function openStatisticsScreen() {
 
             // send to python to open statistics
@@ -184,11 +188,11 @@
         }
 
         // Function to populate the first combo box
-        function populateFirstCombo() {
+        function populateFirstCombo(indexes) {
             var firstCombo = document.getElementById("firstCombo");
 
             // Replace this with your function to get elements
-            var elements = getFirstComboElements();
+            var elements = indexes;
 
             // Clear existing options
             firstCombo.innerHTML = '<option value="">Select Option</option>';
@@ -243,7 +247,7 @@
         }
 
         // Populate the first combo box initially
-        populateFirstCombo();
+        getIndexesKeys();
     </script>
 
 </body>

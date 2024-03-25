@@ -147,7 +147,6 @@
 
     <section>
 
-        <!-- <button id="minMaxButton" onclick="getMinMaxKeys()">Min/Max query</button> -->
         <div id="statistics-block"></div>
     </section>
 
@@ -165,8 +164,8 @@
         function updateStatisticsBlock(min_key, min_counter, max_key, max_counter) {
             var statisticsBlock = document.getElementById('statistics-block');
             statisticsBlock.innerHTML = `
-                <p>Most common search: ["${max_key}" appeared in ${max_counter} searches]</p>
-                <p>Least common search: ["${min_key}" appeared in ${min_counter} searches]</p>
+                <p>Most common search: "${max_key}" appeared in ${max_counter} searches</p>
+                <p>Least common search: "${min_key}" appeared in ${min_counter} searches</p>
               `;
 
         }
