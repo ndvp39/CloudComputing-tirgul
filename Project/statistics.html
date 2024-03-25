@@ -176,7 +176,6 @@
         }
 
         function generateGraph(indexes, counters) {
-            console.log("ENTER");
             const canvas = document.getElementById('wordGraph');
             const ctx = canvas.getContext('2d');
 
@@ -191,13 +190,12 @@
                 const sumOfCounters = counters[i];
 
                 ctx.fillStyle = '#4CAF50'; // Green color for bars
-                ctx.fillRect(xPos, canvas.height - sumOfCounters * 5, 30, sumOfCounters * 5);
+                ctx.fillRect(xPos, canvas.height - sumOfCounters, 30, sumOfCounters);
                 ctx.fillStyle = '#ffffff'; // White color for text
-                ctx.fillText(`${sumOfCounters}`, xPos + 10, canvas.height - sumOfCounters * 5 - 10);
+                ctx.fillText(`${sumOfCounters}`, xPos + 10, canvas.height - sumOfCounters - 10);
                 ctx.fillText(index, xPos, canvas.height + 15);
                 xPos += 50;
             }
-            console.log("EXIT");
         }
     </script>
 
