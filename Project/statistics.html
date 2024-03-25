@@ -182,18 +182,21 @@
             // Clear the canvas
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // Draw the graph based on the provided indexes and counters
+            // Calculate the maximum counter to determine the scaling factor
+            const maxCounter = Math.max(...counters);
+            const scaleFactor = maxCounter > canvas.height ? canvas.height / maxCounter : 1;
+
+            // Draw the graph based on the provided indexes and scaled counters
             var xPos = 10;
 
             for (let i = 0; i < indexes.length; i++) {
                 const index = indexes[i];
-                const sumOfCounters = counters[i];
+                const scaledCounter = counters[i] * scaleFactor;
 
                 ctx.fillStyle = '#4CAF50'; // Green color for bars
-                ctx.fillRect(xPos, canvas.height - sumOfCounters, 30, sumOfCounters);
+                ctx.fillRect(xPos, canvas.height - scaledCounter, 30, scaledCounter);
                 ctx.fillStyle = '#ffffff'; // White color for text
-                ctx.fillText(`${sumOfCounters}`, xPos + 10, canvas.height - sumOfCounters - 10);
-                ctx.fillText(index, xPos, canvas.height + 15);
+                ctx.fillText(`${counters[i]} (${index})`, xPos + 5, canvas.height - scaledCounter - 10);
                 xPos += 50;
             }
         }
