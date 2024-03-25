@@ -191,11 +191,8 @@
         function populateFirstCombo(indexes) {
             var firstCombo = document.getElementById("firstCombo");
 
-            // Replace this with your function to get elements
-            //var elements = indexes;
-
             // Clear existing options
-            firstCombo.innerHTML = '<option value="">Select Option</option>';
+            firstCombo.innerHTML = '<option value="">Select Index</option>';
 
             // Populate with new options
             indexes.forEach(function (element) {
@@ -216,10 +213,8 @@
         function populateSecondCombo(links) {
             var secondCombo = document.getElementById("secondCombo");
 
-            //var elements = links;
-
             // Clear existing options
-            secondCombo.innerHTML = '<option value="">Select Option</option>';
+            secondCombo.innerHTML = '<option value="">Select Link</option>';
 
             // Populate with new options
             links.forEach(function (element) {
