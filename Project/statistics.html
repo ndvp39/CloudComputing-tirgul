@@ -184,7 +184,7 @@
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
             // Calculate the maximum counter to determine the scaling factor
-            const maxCounter = Math.max(...counters);
+            const maxCounter = Math.max(...counters) + 10;
             const scaleFactor = maxCounter > canvas.height ? canvas.height / maxCounter : 1;
 
             // Draw the graph based on the provided indexes and scaled counters
@@ -198,7 +198,7 @@
                 ctx.fillRect(xPos, canvas.height - scaledCounter, 30, scaledCounter);
                 ctx.fillStyle = '#ffffff'; // White color for text
                 ctx.fillText(`${counters[i]} (${index})`, xPos + 5, canvas.height - scaledCounter - 10);
-                xPos += 80;
+                xPos += 85;
             }
         }
 
