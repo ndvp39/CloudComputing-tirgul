@@ -207,10 +207,7 @@
 
                 // Draw the counter text
                 ctx.fillStyle = '#ffffff'; // White color for text
-                ctx.fillText(`${counters[i]}`, initialXPos + barWidth / 2, canvas.height - scaledCounter - textOffset);
-
-                // Draw the index text
-                ctx.fillText(index, initialXPos + barWidth / 2 - ctx.measureText(index).width / 2, canvas.height + textOffset);
+                ctx.fillText(`${counters[i]} (${index})`, initialXPos + barWidth / 2, canvas.height - scaledCounter - textOffset);
 
                 // Move to the next position
                 initialXPos += barWidth + gapBetweenBars;
