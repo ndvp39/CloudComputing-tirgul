@@ -164,12 +164,12 @@
     <section>
 
         <select id="firstCombo" onchange="getLinks()">
-            <option value="">Select Option</option>
+            <option value="">Select Index</option>
         </select>
     </section>
     <section>
         <select id="secondCombo">
-            <option value="">Select Option</option>
+            <option value="">Select Link</option>
         </select>
     </section>
 
@@ -192,13 +192,13 @@
             var firstCombo = document.getElementById("firstCombo");
 
             // Replace this with your function to get elements
-            var elements = indexes;
+            //var elements = indexes;
 
             // Clear existing options
             firstCombo.innerHTML = '<option value="">Select Option</option>';
 
             // Populate with new options
-            elements.forEach(function (element) {
+            indexes.forEach(function (element) {
                 var option = document.createElement("option");
                 option.text = element;
                 option.value = element;
@@ -216,13 +216,13 @@
         function populateSecondCombo(links) {
             var secondCombo = document.getElementById("secondCombo");
 
-            var elements = links;
+            //var elements = links;
 
             // Clear existing options
             secondCombo.innerHTML = '<option value="">Select Option</option>';
 
             // Populate with new options
-            elements.forEach(function (element) {
+            links.forEach(function (element) {
                 var option = document.createElement("option");
                 option.text = element;
                 option.value = element;
