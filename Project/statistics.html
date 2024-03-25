@@ -176,6 +176,7 @@
         }
 
         function generateGraph(indexes, counters) {
+            console.log("ENTER");
             const canvas = document.getElementById('wordGraph');
             const ctx = canvas.getContext('2d');
 
@@ -186,31 +187,18 @@
             const maxCounter = Math.max(...counters);
             const scaleFactor = maxCounter > canvas.height ? canvas.height / maxCounter : 1;
 
-            // Define spacing variables
-            const barWidth = 30;
-            const gapBetweenBars = 50; // Increase this value to increase the gap between bars
-            const textOffset = 10; // Offset for counter and index text
-
-            // Calculate the total width occupied by each bar and the gap
-            const totalWidth = (barWidth + gapBetweenBars) * indexes.length - gapBetweenBars;
-
-            // Calculate the initial x-position to center the bars on the canvas
-            let initialXPos = (canvas.width - totalWidth) / 2;
+            // Draw the graph based on the provided indexes and scaled counters
+            var xPos = 10;
 
             for (let i = 0; i < indexes.length; i++) {
                 const index = indexes[i];
                 const scaledCounter = counters[i] * scaleFactor;
 
-                // Draw the bar
                 ctx.fillStyle = '#4CAF50'; // Green color for bars
-                ctx.fillRect(initialXPos, canvas.height - scaledCounter, barWidth, scaledCounter);
-
-                // Draw the counter text
+                ctx.fillRect(xPos, canvas.height - scaledCounter, 30, scaledCounter);
                 ctx.fillStyle = '#ffffff'; // White color for text
-                ctx.fillText(`${counters[i]} (${index})`, initialXPos + barWidth / 2, canvas.height - scaledCounter - textOffset);
-
-                // Move to the next position
-                initialXPos += barWidth + gapBetweenBars;
+                ctx.fillText(`${counters[i]} (${index})`, xPos + 5, canvas.height - scaledCounter - 10);
+                xPos += 80;
             }
         }
 
