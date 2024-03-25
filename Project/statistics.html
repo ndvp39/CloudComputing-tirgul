@@ -186,35 +186,25 @@
             const maxCounter = Math.max(...counters);
             const scaleFactor = maxCounter > canvas.height ? canvas.height / maxCounter : 1;
 
-            // Set the font style
-            ctx.font = '12px Arial';
+            // Calculate the width of each bar and the space between bars dynamically
+            const totalBarsWidth = 30 * indexes.length;
+            const spaceBetweenBars = 100;
 
             // Draw the graph based on the provided indexes and scaled counters
-            var xPos = 10;
-            const barWidth = 30;
-            const spaceBetweenBars = 50;
+            var xPos = spaceBetweenBars;
 
             for (let i = 0; i < indexes.length; i++) {
                 const index = indexes[i];
                 const scaledCounter = counters[i] * scaleFactor;
-                const barHeight = canvas.height - scaledCounter;
 
-                // Draw the bar
                 ctx.fillStyle = '#4CAF50'; // Green color for bars
-                ctx.fillRect(xPos, barHeight, barWidth, scaledCounter);
-
-                // Draw the counter value above the bar
+                ctx.fillRect(xPos, canvas.height - scaledCounter, 30, scaledCounter);
                 ctx.fillStyle = '#ffffff'; // White color for text
-                ctx.fillText(`${counters[i]}`, xPos + barWidth / 2 - ctx.measureText(`${counters[i]}`).width / 2, barHeight - 10);
-
-                // Draw the index name under the bar
-                ctx.fillText(index, xPos + barWidth / 2 - ctx.measureText(index).width / 2, canvas.height + 15);
-
-                xPos += spaceBetweenBars;
+                ctx.fillText(`${counters[i]} (${index})`, xPos + 5, canvas.height - scaledCounter - 10);
+                xPos += spaceBetweenBars + 30; // Add space for the next bar
             }
         }
-    </script>
 
-</body>
+</body >
 
-</html>
+</html >
