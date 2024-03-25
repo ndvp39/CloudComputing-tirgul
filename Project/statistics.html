@@ -186,23 +186,37 @@
             const maxCounter = Math.max(...counters);
             const scaleFactor = maxCounter > canvas.height ? canvas.height / maxCounter : 1;
 
-            // Draw the graph based on the provided indexes and scaled counters
-            var xPos = 10;
+            // Define spacing variables
             const barWidth = 30;
             const gapBetweenBars = 50; // Increase this value to increase the gap between bars
+            const textOffset = 10; // Offset for counter and index text
+
+            // Calculate the total width occupied by each bar and the gap
+            const totalWidth = (barWidth + gapBetweenBars) * indexes.length - gapBetweenBars;
+
+            // Calculate the initial x-position to center the bars on the canvas
+            let initialXPos = (canvas.width - totalWidth) / 2;
 
             for (let i = 0; i < indexes.length; i++) {
                 const index = indexes[i];
                 const scaledCounter = counters[i] * scaleFactor;
 
+                // Draw the bar
                 ctx.fillStyle = '#4CAF50'; // Green color for bars
-                ctx.fillRect(xPos, canvas.height - scaledCounter, barWidth, scaledCounter);
+                ctx.fillRect(initialXPos, canvas.height - scaledCounter, barWidth, scaledCounter);
+
+                // Draw the counter text
                 ctx.fillStyle = '#ffffff'; // White color for text
-                ctx.fillText(`${counters[i]}`, xPos + barWidth / 2 - 5, canvas.height - scaledCounter - 10);
-                ctx.fillText(index, xPos + barWidth / 2 - ctx.measureText(index).width / 2, canvas.height + 15);
-                xPos += gapBetweenBars + barWidth;
+                ctx.fillText(`${counters[i]}`, initialXPos + barWidth / 2, canvas.height - scaledCounter - textOffset);
+
+                // Draw the index text
+                ctx.fillText(index, initialXPos + barWidth / 2 - ctx.measureText(index).width / 2, canvas.height + textOffset);
+
+                // Move to the next position
+                initialXPos += barWidth + gapBetweenBars;
             }
         }
+
 
     </script>
 
