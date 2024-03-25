@@ -186,12 +186,8 @@
             const maxCounter = Math.max(...counters);
             const scaleFactor = maxCounter > canvas.height ? canvas.height / maxCounter : 1;
 
-            // Calculate the width of each bar and the space between bars dynamically
-            const totalBarsWidth = 30 * indexes.length;
-            const spaceBetweenBars = 100;
-
             // Draw the graph based on the provided indexes and scaled counters
-            var xPos = spaceBetweenBars;
+            var xPos = 20;
 
             for (let i = 0; i < indexes.length; i++) {
                 const index = indexes[i];
@@ -200,11 +196,13 @@
                 ctx.fillStyle = '#4CAF50'; // Green color for bars
                 ctx.fillRect(xPos, canvas.height - scaledCounter, 30, scaledCounter);
                 ctx.fillStyle = '#ffffff'; // White color for text
-                ctx.fillText(`${counters[i]} (${index})`, xPos + 5, canvas.height - scaledCounter - 10);
-                xPos += spaceBetweenBars + 30; // Add space for the next bar
+                ctx.fillText(`${counters[i]}`, xPos + 10, canvas.height - scaledCounter - 10);
+                ctx.fillText(index, xPos, canvas.height + 15);
+                xPos += 50;
             }
         }
+    </script>
 
-</body >
+</body>
 
-</html >
+</html>
