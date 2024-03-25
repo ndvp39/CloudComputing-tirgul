@@ -94,51 +94,6 @@ function renderResults_title_link(titles, links) {
     }
 }
 
-// Function to add a query to the map or increment its counter if it already exists
-function addQuery(query) {
-    console.log("Query received:", query); // Debugging statement
-    if (searchCounterMap[query]) {
-        searchCounterMap[query]++; // Increment counter if query already exists
-    } else {
-        searchCounterMap[query] = 1; // Initialize counter if query is encountered for the first time
-    }
-    console.log("Updated searchCounterMap:", searchCounterMap); // Debugging statement
-    console.log(Object.keys(searchCounterMap).length)
-    console.log("Updated searchCounterMap:", searchCounterMap); // Debugging statement
-}
-
-// Function to get the query with the minimum counter
-function getMinQuery() {
-    let minName;
-    let minCounter = 0;
-
-    for (var name in searchCounterMap) {
-        if (searchCounterMap[name] < minCounter) {
-            minName = name;
-            minCounter = searchCounterMap[name];
-        }
-    }
-
-    return minName;
-}
-
-// Function to get the query with the maximum counter
-function getMaxQuery() {
-    let maxName;
-    let maxCounter = 0;
-
-    for (var name in searchCounterMap) {
-        if (searchCounterMap[name] > maxCounter) {
-            maxName = name;
-            maxCounter = searchCounterMap[name];
-        }
-    }
-
-    return maxName;
-}
-
-
-
 function generateGraph() {
     const canvas = document.getElementById('wordGraph');
     const ctx = canvas.getContext('2d');
@@ -159,43 +114,3 @@ function generateGraph() {
         xPos += 50;
     }
 }
-
-
-
-// // Your web app's Firebase configuration
-// const firebaseConfig = {
-//     apiKey: "AIzaSyCAxakgYrZ7JNViupl2eEDaaRXWn9wPEbE",
-//     authDomain: "cloudprojectpanthers.firebaseapp.com",
-//     projectId: "cloudprojectpanthers",
-//     storageBucket: "cloudprojectpanthers.appspot.com",
-//     messagingSenderId: "23178040617",
-//     appId: "1:23178040617:web:e2a2fc03db689d22ef9338",
-//     measurementId: "G-4YBSX1LQ7K"
-// };
-
-// // Initialize Firebase
-// const app = initializeApp(firebaseConfig);
-// const db = getFirestore(app);
-// console.log(db);
-
-// // Define the function to update or add a document
-// function updateOrAddStatistic(statisticName) {
-//     var statisticsRef = db.collection("statisticsPanthers").doc(statisticName);
-
-//     return db.runTransaction(function (transaction) {
-//         return transaction.get(statisticsRef).then(function (doc) {
-//             if (doc.exists) {
-//                 // Document exists, update the counter
-//                 var newValue = doc.data().counter + 1;
-//                 transaction.update(statisticsRef, { counter: newValue });
-//             } else {
-//                 // Document doesn't exist, create a new one
-//                 transaction.set(statisticsRef, { counter: 1 });
-//             }
-//         });
-//     }).then(function () {
-//         console.log("Transaction successfully committed!");
-//     }).catch(function (error) {
-//         console.error("Transaction failed: ", error);
-//     });
-// }

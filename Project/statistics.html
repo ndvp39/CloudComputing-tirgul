@@ -33,12 +33,13 @@
             padding: 20px;
         }
 
-        .statistics-block {
+        #statistics-block {
             flex: 1;
             background-color: #505050;
             /* Even lighter background color for the two sections */
             padding: 20px;
             margin: 10px;
+            align-items: center;
         }
 
         #graph-section {
@@ -148,20 +149,12 @@
 
         <button id="minMaxButton" onclick="getMinMaxKeys()">Min/Max query</button>
         <div id="statistics-block"></div>
-        <div class="index-block">
-            <h2>Latest added indexes!!!! </h2>
-            <ul>
-                <li>[AWs]</li>
-                <li>[Cloud]</li>
-                <li>[Data]</li>
-            </ul>
-        </div>
     </section>
 
     <section id="graph-section">
         <h2>Index Graph - top 5 links</h2>
         <canvas id="wordGraph" width="400" height="200"></canvas>
-        <button id="generateButton">Generate Graph</button>
+        <button id="generateButton" onclick="getRandomIndexes()">Generate Graph</button>
     </section>
     <script>
         function getMinMaxKeys() {
@@ -176,6 +169,33 @@
                 <p>Least common search: ["${min_key}" appeared in ${min_counter} searches]</p>
               `;
 
+        }
+
+        function getRandomIndexes() {
+            google.colab.kernel.invokeFunction('notebook.get_random_indexes_with_counters', [], {});
+        }
+
+        function generateGraph(indexes, counters) {
+            const canvas = document.getElementById('wordGraph');
+            const ctx = canvas.getContext('2d');
+
+            // Clear the canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw the graph based on the provided indexes and counters
+            var xPos = 10;
+
+            for (let i = 0; i < indexes.length; i++) {
+                const index = indexes[i];
+                const sumOfCounters = counters[i];
+
+                ctx.fillStyle = '#4CAF50'; // Green color for bars
+                ctx.fillRect(xPos, canvas.height - sumOfCounters * 5, 30, sumOfCounters * 5);
+                ctx.fillStyle = '#ffffff'; // White color for text
+                ctx.fillText(`${sumOfCounters}`, xPos + 10, canvas.height - sumOfCounters * 5 - 10);
+                ctx.fillText(index, xPos, canvas.height + 15);
+                xPos += 50;
+            }
         }
     </script>
 
