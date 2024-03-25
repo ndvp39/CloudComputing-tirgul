@@ -154,10 +154,14 @@
             position: relative;
             display: inline-block;
             overflow-x: auto;
+            /* Enable horizontal scrolling */
+            max-width: 250px;
+            /* Adjust maximum width as needed */
         }
 
         .custom-combobox select {
-            width: auto;
+            width: 100%;
+            /* Use full width of the container */
             padding: 10px;
             font-size: 16px;
             border: 2px solid #ccc;
@@ -166,8 +170,6 @@
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
-            overflow-x: auto;
-
         }
 
         .custom-combobox select:focus {
@@ -178,7 +180,7 @@
         /* Styling for the arrow */
         .custom-combobox::after {
             content: "\25BC";
-            position: flex;
+            position: absolute;
             top: 50%;
             right: 5px;
             transform: translateY(-50%);
