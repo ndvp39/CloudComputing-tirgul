@@ -172,12 +172,11 @@
         }
 
         function getRandomIndexes() {
-            console.log("ENTER");
             google.colab.kernel.invokeFunction('notebook.get_random_indexes_with_counters', [], {});
-            console.log("EXIT");
         }
 
         function generateGraph(indexes, counters) {
+            console.log("ENTER");
             const canvas = document.getElementById('wordGraph');
             const ctx = canvas.getContext('2d');
 
@@ -198,6 +197,7 @@
                 ctx.fillText(index, xPos, canvas.height + 15);
                 xPos += 50;
             }
+            console.log("EXIT");
         }
     </script>
 
