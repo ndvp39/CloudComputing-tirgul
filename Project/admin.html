@@ -148,6 +148,39 @@
             font-size: 40px;
             margin: 10px 10px 10px 30px;
         }
+
+        /* Styling for the combo box */
+        .custom-combobox {
+            position: relative;
+            display: inline-block;
+        }
+
+        .custom-combobox select {
+            width: 200px;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        .custom-combobox select:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        /* Styling for the arrow */
+        .custom-combobox::after {
+            content: "\25BC";
+            position: absolute;
+            top: 50%;
+            right: 5px;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
     </style>
 </head>
 
@@ -161,13 +194,13 @@
             src="https://github.com/ndvp39/CloudComputing-tirgul/blob/main/Project/Images/icon.png?raw=true" />
     </header>
 
-    <section>
+    <section class="custom-combobox">
 
         <select id="firstCombo" onchange="getLinks()">
             <option value="">Select Index</option>
         </select>
     </section>
-    <section>
+    <section class="custom-combobox">
         <select id="secondCombo">
             <option value="">Select Link</option>
         </select>
